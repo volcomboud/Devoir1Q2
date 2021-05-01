@@ -1,5 +1,5 @@
 #include <iostream>
-#include <math.h> 
+#include <math.h>
 
 int menuPrinc();
 void messageErreur();
@@ -14,16 +14,21 @@ int main() {
 	do
 	{
 		int choix;
-		double taille_cotee=-1;
-		double *ptr_cotee = &taille_cotee;
-
-	
+		double taille_cotee = -1;
+		
 		taille_cotee = definirCotee();
-		choix = menuPrinc();
+		if (taille_cotee != 0)
+		{
+			choix = menuPrinc();
+		}
+		else
+		{
+			choix = 0;
+		}
 
 		switch (choix)
 		{
-		case 1 :
+		case 1:
 			//Dodecahedre
 			dodecahedre(taille_cotee);
 			break;
@@ -44,7 +49,7 @@ int main() {
 	auRevoir();
 	return 0;
 }
-
+//==================================LOGISTIQUE================================================================
 int menuPrinc() {
 	bool sortir = false;
 	int choix;
@@ -59,7 +64,7 @@ int menuPrinc() {
 			<< "|                                                                                           |\n"
 			<< "============================================================================================="
 			<< std::endl;
-		
+
 		std::cin >> choix;
 		if (std::cin.fail())
 		{
@@ -99,6 +104,7 @@ double definirCotee() {
 	do
 	{
 		std::cout << "Bienvenue à vous, \n         Veuillez entrer la taille d'un cotee :" << std::endl;
+		std::cout << "\n\n~~ Vous pouvez faire le 0 pour quitter le logiciel~~ " << std::endl;
 		std::cin >> valeur;
 		if (std::cin.fail())
 		{
@@ -132,9 +138,8 @@ void dodecahedre(double cotee) {
 	std::cin.ignore();
 }
 void octahedre(double cotee) {
-	std::cout << "Le volume de l'Octahedre est de = " << (.471* pow(cotee, 3)) << std::endl;
+	std::cout << "Le volume de l'Octahedre est de = " << (.471 * pow(cotee, 3)) << std::endl;
 	std::cout << "\n		Faites entree pour continuer" << std::endl;
 	std::cin.get();
 	std::cin.ignore();
 }
-
